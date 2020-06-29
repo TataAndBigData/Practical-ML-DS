@@ -10,3 +10,8 @@
 5. Library implementation
 6. Advanced options (Hyperparameters & other kwargs)
 7. Challenges
+
+Slides
+code
+challenges
+notebook
