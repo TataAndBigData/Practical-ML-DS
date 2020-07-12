@@ -13,8 +13,17 @@ import matplotlib.pyplot as plt
 def get_regression_data(m=20): 
     ground_truth_w = 2.3 # slope
     ground_truth_b = -8 #intercept
-    X = np.random.randn(m, 1)*2
-    Y = ground_truth_w*X + ground_truth_b + 1*np.random.randn(m, 1)
+    # X = np.random.randn(m, 1)*2
+    X = np.random.uniform(0, 1, size=(m, 1))*2
+    # print(X)
+    idxs = np.argsort(X, axis=0)
+    idxs = np.squeeze(idxs)
+    print(idxs)
+    X = X[idxs]
+    print(X)
+    print(X.shape)
+    # X = X[np.argsort(X, axis=0)]
+    Y = ground_truth_w*X + ground_truth_b + 0.5*np.random.randn(m, 1)
     print(X.shape, Y.shape)
     return X, Y #returns X (the input) and Y (labels)
 
@@ -25,10 +34,11 @@ def show_regression_data(X, Y):
     plt.ylabel('Y')
     plt.show()
 
-def visualise_regression_predictions(X, y_hat, Y):
+def visualise_regression_data(X, Y, y_hat=None):
     plt.figure()
     plt.scatter(X, Y, c='r', label='Label')
-    plt.scatter(X, y_hat, c='b', label='Hypothesis', marker='x')
+    if y_hat is not None:
+        plt.plot(X, y_hat, c='b', label='Hypothesis', marker='x')
     plt.legend()
     plt.xlabel('X')
     plt.ylabel('Y')
