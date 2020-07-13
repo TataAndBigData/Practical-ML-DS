@@ -18,13 +18,13 @@ def get_regression_data(m=20):
     # print(X)
     idxs = np.argsort(X, axis=0)
     idxs = np.squeeze(idxs)
-    print(idxs)
+    # print(idxs)
     X = X[idxs]
-    print(X)
-    print(X.shape)
+    # print(X)
+    # print(X.shape)
     # X = X[np.argsort(X, axis=0)]
-    Y = ground_truth_w*X + ground_truth_b + 0.5*np.random.randn(m, 1)
-    print(X.shape, Y.shape)
+    Y = ground_truth_w*X + ground_truth_b + 0.2*np.random.randn(m, 1)
+    # print(X.shape, Y.shape)
     return X, Y #returns X (the input) and Y (labels)
 
 def show_regression_data(X, Y):
