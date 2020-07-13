@@ -3,9 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from get_colors import colors
 
-def get_classification_data(sd=6, m=10, n_features=2, n_clusters=2):
-    X, Y = sklearn.datasets.make_blobs(n_samples=m, n_features=n_features, centers=n_clusters, cluster_std=sd)
-    return X, Y
+def get_classification_data(sd=6, m=10, n_features=2, n_clusters=2, variant='blobs', noise=0, factor=0.1):
+    if variant == 'circles':
+        return sklearn.datasets.make_circles(n_samples=m, factor=factor, noise=noise)
+    if variant == 'blobs':
+        return sklearn.datasets.make_blobs(n_samples=m, n_features=n_features, centers=n_clusters, cluster_std=sd)
 
 import numpy as np
 import matplotlib.pyplot as plt

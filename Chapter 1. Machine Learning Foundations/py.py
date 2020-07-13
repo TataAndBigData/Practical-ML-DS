@@ -1,5 +1,0 @@
-#%%
-print('yo')
-
-# %%
-print('ye')
