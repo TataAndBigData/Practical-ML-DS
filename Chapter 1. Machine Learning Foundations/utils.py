@@ -56,12 +56,8 @@ def visualise_predictions(H, X, Y=None, n=50):
         for x2_idx, x2 in enumerate(np.linspace(ymin, ymax, n)): # for each row
             h = H(np.array([[x1, x2]])).astype(int)[0]
             meshgrid[n-1-x2_idx, x1_idx] = h # axis 0 is the vertical direction starting from the top and increasing downward
-    # if Y:
-    #     print(X.shape)
-    #     plt.scatter(X, Y)
     if Y is not None:
         for idx in list(set(Y)):
-            print(idx)
             plt.scatter(X[Y == idx][:, 0], X[Y== idx][:, 1], c=colors[idx])
     else:
         plt.scatter(X[:,0], X[:, 1])
