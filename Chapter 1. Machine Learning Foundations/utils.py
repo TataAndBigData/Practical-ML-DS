@@ -49,14 +49,23 @@ def visualise_regression_data(X, Y, y_hat=None):
 def calc_accuracy(predictions, labels):
     return np.mean((predictions == labels).astype(int)) * 100
 
-def visualise_predictions(H, X, n=50):
+def visualise_predictions(H, X, Y=None, n=50):
     xmin, xmax, ymin, ymax = min(X[:, 0]), max(X[:, 0]), min(X[:, 1]), max(X[:, 1])
     meshgrid = np.zeros((n, n))
     for x1_idx, x1 in enumerate(np.linspace(xmin, xmax, n)): # for each column
         for x2_idx, x2 in enumerate(np.linspace(ymin, ymax, n)): # for each row
             h = H(np.array([[x1, x2]])).astype(int)[0]
             meshgrid[n-1-x2_idx, x1_idx] = h # axis 0 is the vertical direction starting from the top and increasing downward
-    plt.imshow(meshgrid, extent=(xmin, xmax, ymin, ymax), cmap='viridis')
+    # if Y:
+    #     print(X.shape)
+    #     plt.scatter(X, Y)
+    if Y is not None:
+        for idx in list(set(Y)):
+            print(idx)
+            plt.scatter(X[Y == idx][:, 0], X[Y== idx][:, 1], c=colors[idx])
+    else:
+        plt.scatter(X[:,0], X[:, 1])
+    plt.imshow(meshgrid, extent=(xmin, xmax, ymin, ymax), cmap='winter')
 
 
 def show_data(X, Y, predictions=None):
