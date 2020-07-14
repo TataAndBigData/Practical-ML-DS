@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from get_colors import colors
 
-def get_classification_data(sd=6, m=10, n_features=2, n_clusters=2, variant='blobs', noise=0, factor=0.1):
+def get_classification_data(sd=3, m=10, n_features=2, n_clusters=2, variant='blobs', noise=0, factor=0.1):
     if variant == 'circles':
         return sklearn.datasets.make_circles(n_samples=m, factor=factor, noise=noise)
     if variant == 'blobs':
