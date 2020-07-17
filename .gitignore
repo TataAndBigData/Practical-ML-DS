@@ -2,4 +2,5 @@
 *.ipynb_checkpoints/
 *pagila/
 **.DS_Store/
-A.\ Prelude/Module\ 0.\ Introduction\ to\ Programming/.DS_Store
+A.\ Prelude/.DS_Store
+.DS_Store/
