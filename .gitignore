@@ -1,6 +1,5 @@
 *node_modules*
 *.ipynb_checkpoints/
 *pagila/
-**.DS_Store/
-A.\ Prelude/.DS_Store
-.DS_Store/
+*.DS_Store
+.DS_Store
