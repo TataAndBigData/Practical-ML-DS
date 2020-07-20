@@ -3,3 +3,4 @@
 *pagila/
 *.DS_Store
 .DS_Store
+*flights.txt
