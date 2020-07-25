@@ -95,6 +95,15 @@ def prob_estimate(x_lower, x_upper, pdf_func, bin_width):
         area_count+= pdf_func(current_x)*bin_width # adding the area of the current interval
         current_x += bin_width
     return area_count
+    
+
+#9: Normal PDF
+def normal(x, mean, std):
+    exponent = ((x-mean)/std)**2
+    exponent *= -0.5
+    output = np.exp(exponent)/(std*np.sqrt(2*np.pi))
+    return output    
+
 
 # Visualization Code
 #1:
@@ -170,3 +179,58 @@ def visualize4(x_true, f_true, pdf_func):
         
 	fig.update_layout(showlegend=False)
 	fig.show()
+
+#5:
+def visualize5(x_true, f_true):
+	print("True Mean: 1, True Variance: 1")
+	fig = go.Figure()
+	fig.add_trace(go.Scatter(x=x_true, y=f_true, marker_color="black"))
+	fig.update_layout(
+    	title_text='Exponential Distribution', # title of plot
+    	xaxis_title_text='x', # xaxis label
+    	yaxis_title_text='Probability Density', # yaxis label
+	)
+	fig.show()
+	
+#6:
+def visualize6(n_vals, mean_sets):
+	titles = ["Estimated distribution(n={size})".format(size=n) for n in n_vals]
+	fig = make_subplots(rows=2, cols=2, subplot_titles=titles)
+
+	idx = 0
+	for r in range(2):
+		for c in range(2):
+			bins, prob_densities = get_density_data(0, 5, mean_sets[idx, :], 0.05)
+			fig = add_hist(fig, bins, prob_densities, r+1, c+1)
+			fig.update_yaxes(title_text="Probability Density", row=r+1, col=c+1)
+			fig.update_xaxes(title_text="x", row=r+1, col=c+1)
+			idx +=1
+	fig.show()
+
+
+#7:
+def visualize7(x_sample, n, interval_floor, interval_ceil, student_normal):
+	# Known 
+	n = 100000
+	mean = 175
+	std = 4
+
+	# Determined
+	x_true = np.linspace(150, 200, 1000)
+	f_true = normal(x_true, mean, std)
+
+	interval_floor = 180
+	interval_ceil = 200 # approximately infinity
+	bw = 0.1 
+
+	fig = go.Figure()
+	fig = add_hist_approx(fig, interval_floor, interval_ceil, student_normal, bw)
+	fig.add_trace(go.Scatter(x=x_true, y=f_true, marker_color="black"))
+	fig.update_layout(
+    	title_text='Height Normal Distribution', # title of plot
+    	xaxis_title_text='x', # xaxis label
+    	yaxis_title_text='Probability Density', # yaxis label
+    	showlegend=False
+	)
+	fig.show()
+	
