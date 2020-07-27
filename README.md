@@ -1,3 +1,3 @@
-# Full-Stack-AI-Summer-School
+# AI Core's Data Science and Machine Learning Summer School
 
-leggo
+Welcome to AI Core's DSML School!
