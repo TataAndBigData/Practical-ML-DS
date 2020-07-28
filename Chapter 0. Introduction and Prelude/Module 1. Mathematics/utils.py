@@ -107,7 +107,7 @@ def normal(x, mean, std):
 
 # Visualization Code
 #1:
-def visualize1(x):
+def visualize_prob_hist(x):
 	fig = make_subplots(rows=2, cols=2,
                     subplot_titles = ['bin width = 5cm', 'bin width = 3cm', 'bin width = 1cm', 'bin width = 0.1cm'])
 	bin_widths = np.array([[5, 3], [1, 0.1]])
@@ -123,7 +123,7 @@ def visualize1(x):
 	fig.show()
 
 #2:
-def visualize2(x):
+def visualize_density_hist(x):
 	fig = make_subplots(rows=2, cols=2,
                     subplot_titles = ['bin width = 5cm', 'bin width = 3cm', 'bin width = 1cm', 'bin width = 0.1cm'])
 
@@ -140,7 +140,7 @@ def visualize2(x):
 	fig.show()
 	
 #3:
-def visualize3(x_sample, x_true, f_true):
+def visualize_exp_approx(x_sample, x_true, f_true):
 	fig = make_subplots(rows=2, cols=2,
                     subplot_titles = ['bin width = 5cm', 'bin width = 3cm', 'bin width = 1cm', 'bin width = 0.1cm'])
 
@@ -158,7 +158,7 @@ def visualize3(x_sample, x_true, f_true):
 	fig.show()
 	
 #4:
-def visualize4(x_true, f_true, pdf_func):
+def visualize_exp_interval(x_true, f_true, pdf_func):
 	interval_floor = 1
 	interval_ceil = 3
 	bin_widths = np.array([[3, 1], [0.1, 0.05]])
@@ -181,7 +181,7 @@ def visualize4(x_true, f_true, pdf_func):
 	fig.show()
 
 #5:
-def visualize5(x_true, f_true):
+def visualize_exp_true(x_true, f_true):
 	print("True Mean: 1, True Variance: 1")
 	fig = go.Figure()
 	fig.add_trace(go.Scatter(x=x_true, y=f_true, marker_color="black"))
@@ -193,7 +193,7 @@ def visualize5(x_true, f_true):
 	fig.show()
 	
 #6:
-def visualize6(n_vals, mean_sets):
+def visualize_mean_approx(n_vals, mean_sets):
 	titles = ["Estimated distribution(n={size})".format(size=n) for n in n_vals]
 	fig = make_subplots(rows=2, cols=2, subplot_titles=titles)
 
@@ -209,7 +209,7 @@ def visualize6(n_vals, mean_sets):
 
 
 #7:
-def visualize7(x_sample, n, interval_floor, interval_ceil, student_normal):
+def visualize_normal_interval(x_sample, n, interval_floor, interval_ceil, student_normal):
 	# Known 
 	n = 100000
 	mean = 175
